@@ -56,6 +56,16 @@ const menuData =
 				pageUrl:'/user-list'
 			},
 			{
+				label: 'Order List',
+				iconPath: user,
+				pageUrl:'/order-list'
+			},
+			{
+				label: 'Booking List',
+				iconPath: user,
+				pageUrl:'/booking-list'
+			},
+			{
 				label: 'All Servies',
 				iconPath: boxChart,
 				pageUrl:'/all-services',
@@ -101,6 +111,12 @@ const menuData =
 						prefix:"🔥",
 						suffix:"🔥",
 						pageUrl:'/all-services/add-service',
+						
+					},
+					{
+						label: 'Add Property',
+						iconPath: boxChart,
+						pageUrl:'/all-services/add-property',
 						
 					},
 				],

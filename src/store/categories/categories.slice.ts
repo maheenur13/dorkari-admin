@@ -6,7 +6,8 @@ const initialState: StateType ={
 	categoriesData:[],
 	categoryList:[],
 	allServices:[],
-	allServiceType:[]
+	allServiceType:[],
+	allProperties:[],
 };
 
 // creating slice of category data
@@ -39,12 +40,15 @@ const slice = createSlice({
 		setAllServiceType: (state, action: PayloadAction<any>) => {
 			state.allServiceType = [...action.payload];
 		},
+		setAllProperties: (state, action: PayloadAction<any>) => {
+			state.allProperties = [...action.payload];
+		},
 	},
 });
 
 export default slice.reducer;
 
-export const { setCategories,setCategoryList, setAllServices,setAllServiceType } = slice.actions;
+export const { setCategories,setCategoryList, setAllServices,setAllServiceType, setAllProperties } = slice.actions;
 
 export const getCategoriesState = (state: AppState): typeof initialState => state.categories;
 
@@ -63,6 +67,7 @@ type StateType = {
 	}[];
 	allServices:AllServiceState;
 	allServiceType:any[];
+	allProperties:any[];
 }
 type AllServiceState = {
 	categoryId:string;

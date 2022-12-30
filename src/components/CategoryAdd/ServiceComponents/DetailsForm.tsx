@@ -2,7 +2,7 @@ import { Editor } from '@components/Atoms';
 import { Button, Form, Modal } from 'antd';
 import React, { FC, useState } from 'react';
 
-export const DetailsForm: FC<any> = ({ id,form,name,parentName }) => {
+export const DetailsForm: FC<any> = ({ id, form, name, parentName }) => {
 	const [editorData, setEditorData] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -11,7 +11,7 @@ export const DetailsForm: FC<any> = ({ id,form,name,parentName }) => {
 	};
 
 	const handleOk = () => {
-		form?.setFieldValue(name,editorData);
+		form?.setFieldValue(name, editorData);
 		setIsModalOpen(false);
 	};
 
@@ -26,13 +26,13 @@ export const DetailsForm: FC<any> = ({ id,form,name,parentName }) => {
 	};
 	return (
 		<div>
-			<Button onClick={showModal} type="primary" className='w-100'>
+			<Button onClick={showModal} type="primary" className="w-100">
 				Add {name}
 			</Button>
 			<Modal width={1000} title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 				<Form.Item
-				labelCol={{span:24}}
-					name={[ parentName || 'services', `${id}`, name]}
+					labelCol={{ span: 24 }}
+					name={id ? [parentName || 'services', `${id}`, name] : name}
 					label={name}
 					rules={[
 						{
@@ -48,7 +48,7 @@ export const DetailsForm: FC<any> = ({ id,form,name,parentName }) => {
 						}}
 						// name="description"
 						onChange={(data) => {
-							console.log(data);
+							// console.log(data);
 
 							setEditorData(data);
 						}}

@@ -1,7 +1,7 @@
 import { categoryAPI } from '@libs/api/addCategory';
 import store from '@store';
 import { swalError } from '@utils/helpers';
-import { setAllServices, setCategories, setCategoryList,setAllServiceType } from './categories.slice';
+import { setAllServices, setCategories, setCategoryList,setAllServiceType, setAllProperties } from './categories.slice';
 
 export const setCategoriesData = async (data: CategoriesState): Promise<void> => {
 	store.dispatch(setCategories(data));
@@ -73,6 +73,24 @@ export const getAllServiceType = async ()=> {
 			}
 		} else {
 			store.dispatch(setAllServiceType(data));
+		}
+	} catch (error) {
+		swalError(error);
+	}
+};
+export const getAllPropertyData = async ()=> {
+	try {
+		const { data, success, message } = await categoryAPI.getAllProperty();
+		if (success) {
+			if (data?.length > 0) {
+				// alert('ok');
+				store.dispatch(setAllProperties(data));
+			}
+			else {
+				store.dispatch(setAllProperties([]));
+			}
+		} else {
+			store.dispatch(setAllProperties(data));
 		}
 	} catch (error) {
 		swalError(error);
